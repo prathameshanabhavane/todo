@@ -6,6 +6,8 @@ import TodoList from './components/TodoList';
 function App() {
   const [inputText, setinputText] = useState('');
   const [todos, setTodos] = useState([]);
+  const [todoEditing, setTodoEditing] = useState(null);
+  const [editingText, setEditingText] = useState('');
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
   const filterHandler = () => {
@@ -22,9 +24,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    getLocalTodos();
-  }, []);
+  // useEffect(() => {
+  //   getLocalTodos();
+  // }, []);
 
   useEffect(() => {
     // console.log('hey')
@@ -61,7 +63,12 @@ function App() {
       <TodoList 
         todos={todos} 
         setTodos={setTodos} 
-        filteredTodos={filteredTodos} />
+        filteredTodos={filteredTodos}
+        todoEditing={todoEditing}
+        setTodoEditing={setTodoEditing}
+        setEditingText={setEditingText}
+        editingText={editingText}
+       />
     </div>
   );
 }
