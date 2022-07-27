@@ -6,18 +6,6 @@ const Todo = ({todoText, todos, setTodos, todo, todoEditing, setTodoEditing, set
         setTodos(todos.filter(el => el.id !== todo.id))
     };
 
-    const completeHandler = () => {
-        setTodos(todos.map(item => {
-            if(item.id === todo.id) {
-                return{
-                    ...item, completed: !item.completed
-                }
-            }
-            return item;
-        }))
-    };
-
-
     const inputTextUpdateHandler = (e) => {
         setEditingText(e.target.value)
     }
@@ -48,7 +36,6 @@ const Todo = ({todoText, todos, setTodos, todo, todoEditing, setTodoEditing, set
                 <li className={`todo-item ${todo.completed ? "completed" : "" }`}>
                     {todoEditing === todo.id ? (<input type="text" value={editingText} onChange={inputTextUpdateHandler} />) : (<span>{todoText}</span>)  }
                 </li>
-                <button onClick={completeHandler} title="Mark Complete" className="complete-btn"><i className="fas fa-check"></i></button>
                 {todoEditing === todo.id && <button className="save-btn" onClick={submitUpdateHandler} title="Save"><i className="fas fa-save"></i></button>}
                 {todoEditing != todo.id && <button onClick={UpdateHandler} title="Edit" className="edit-btn"><i className="fas fa-edit"></i></button> }
                 <button onClick={deletehandler} title="Delete" className="trash-btn"><i className="fas fa-trash"></i></button>

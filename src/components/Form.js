@@ -1,5 +1,5 @@
 
-const Form = ({setinputText, setTodos, todos, inputText, setStatus}) => {
+const Form = ({setinputText, setTodos, todos, inputText}) => {
     const inpuTextHandler = (e) => {
         // console.log(e.target.value);
         setinputText(e.target.value)
@@ -16,11 +16,6 @@ const Form = ({setinputText, setTodos, todos, inputText, setStatus}) => {
         setinputText("");
     };
 
-    const statusHandler = (e) => {
-        // console.log(e.target.value);
-        setStatus(e.target.value)
-    }
-
     return(
         <>
             <form>
@@ -28,13 +23,6 @@ const Form = ({setinputText, setTodos, todos, inputText, setStatus}) => {
                 <button onClick={submitTodoHandler} className="todo-button" type="submit">
                     <i className="fas fa-plus-square"></i>
                 </button>
-                <div className="select">
-                    <select onChange={statusHandler} name="todos" className="filter-todo">
-                        <option value="all">All</option>
-                        <option value="completed">Completed</option>
-                        <option value="uncompleted">Uncompleted</option>
-                    </select>
-                </div>
             </form>
         </>
     )
